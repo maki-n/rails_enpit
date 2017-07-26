@@ -1,17 +1,21 @@
 language: ruby
 rvm:
 - 2.2.5
-addons:
-  postgresql: '9.3'
-before_script:
-- psql -c 'create database travis_ci_test;' -U postgres
-- cp config/database.yml.travis config/database.yml
-- bundle exec rake db:migrate RAILS_ENV=test
+- 1.9.3
+- jruby-19mode
+- rbx-2
 deploy:
   provider: heroku
   api_key:
-    secure: gSSivVKt79akbXf3o3BpRLDtsmrGGLLJZpu3MQMhFpxbfeFReSfQsYmbRZ5UV+OfXUJ7BRaJllyAdTIVH4Su13y1Y5bC5SCjBZ6fPt684KclynySSZkgaaKrYHNDxW8lxQjW6uvycmi5Mcp0wyEipjJx07bYyR1emiTvj5b+4TClIvuqQLckbofeYtCFA9QDG8i+wfltm2a2UIoSSDyeSgZ4EPQWWOrPRsbiWb79MDdIKTtYDT7Y3b5tenenOtPBQMly4AFNfel1acN6PoYVRvEdGCREeqXXBoYfCSy6nZiRtsGHH7EKp6GN8EJQkUffIXRyDHtrCEJxrv/ib/JhAz/1d9Fhuy+6lnxHm8tDxuhRkmaOWW1LT+LxUVUKNj3Ry5+aOaWtziJFdkvHhTWwMyR2gQf5fUIukuHaChfS7x27jUVvt3eSLPR6XTHtlA34w3r8wnJfMWJiVA6SXTcO5VlYghWBo+yEA7TF7Xl/pzweAAfv7BHTnKaQ8iUW8azMwbffdKQM0k/Q1sSbtmgLaWhhV/EU3IcpLVLdlDweDNhdPJc32J4bDzlMp+weVXYi8rEKGfzxmzFAI7rZpa7zns5b9IP9Yw3e7lS/iSNU7BRZitx8qWzLNv4uu96QreK1s3VRVGWeBmxC5BRPJed4yL8ih88322/ox7LKVOrEBTM=
-  app: rails_enpit
+    secure: HqxtV1MOiGeZ1br9qPyP3MKmD5He8wPJmSvYRTmrozenrJahlj54RXnJVN8WiaiUDY4UGry5v7Vpt/G1Qc6E5IPH/72rZn4rrofb2xFd3wZkvFf+p1y4VOTCchi+yQffh/EqaM+4LdRdBBO6kOgZ/5y+emCD0tpTzBD3nkQ3eHWuBNc8PTP4XWsSy0ajlR0KXEi2SaF08NmaZLUkgfBOif3ad+fXvsXN/0HSwnpUGzE5juc+cP6eXGjjO7qf6SxS20wOBMFa7cYv1s0T+wJCokueoGiQCoQHiV7cZch0nQHc0+ggGtsAsY0asnSpml6PXONAOvsIUSV6l3jcwCqQAhSQ60xPTtXhjZXY7HwMgCRv2T1QAqHFsYiyjwcAPeSxe9aaW6nwRirfQvXcwO59wTc7pT8siD5750S4EeeKPO2J6I+nZv4Aj0C6A3H4pv4iuNPEZZvSrCwm72bseQ7qkwy4z+TseIgIc7NwfXgtGtIl4AHg4AUmZpsrAM9MvKiaClWC5bL+n15FaN7YnPi5pUeTO5SFwL0ni9pbF527MOath2n91japzT90z5a6DJqwKVwYLAGLYlRIgT7KTuc19T77BfdYtAZ3O6FAxe0e0K3FcUOUzNSFBVw61++S+UYrwM6cnxw98PdmYlYHqaFEpKP1HCwO4RtEDk2yfftOLT4=
+  app: murmuring-beach-24036
   on:
     repo: maki-n/rails_enpit
-    branch: rails_enpit_iizuka
+    branch: maki-n
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - rake db:migrate RAILS_ENV=test
+  
